@@ -17,15 +17,13 @@ class InventoryApp:
         self.add_button.grid(row = len(self.labels), columnspan = 2)
         self.save_button = tk.Button(master, text = "Сохранить в Excel", command = self.save_to_excel)
         self.save_button.grid(row = len(self.labels) + 1, columnspan = 2)
- 
         self.inventory = []
     def add_item(self):
         item = {label: entry.get() for label, entry in zip(self.labels, self.entries)}
         self.inventory.append(item)
         messagebox.showinfo("Успех", "Материал добавлен!")
         for entry in self.entries:
-            entry.delete(0, tk.END)
- 
+            entry.delete(0, tk.END) 
     def save_to_excel(self):
         df = pd.DataFrame(self.inventory)
         df.to_excel('inventory.xlsx', index=False)
@@ -34,4 +32,6 @@ if __name__ == 'main':
     root = tk.Tk()
     app = InventoryApp(root)
     root.mainloop()
+
+    
 Представленный код приложения позволяет пользователям вводить информацию о товарах и сохранять данные.
